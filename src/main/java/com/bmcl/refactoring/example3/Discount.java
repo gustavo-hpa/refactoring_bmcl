@@ -1,6 +1,6 @@
 package com.bmcl.refactoring.example3;
 
-public class Discount {
+public abstract class Discount {
     private final int fixed;
     private final double percentage;
 
@@ -17,9 +17,8 @@ public class Discount {
     public double applyDiscount(double price) {
         double discountedPrice = price;
 
-        if (fixed > 0) discountedPrice = fixed > price ? 0 : price - fixed;
-        else if (percentage > 0) discountedPrice = price - price * percentage;
-        else discountedPrice = price;
+        if (fixed != 0) discountedPrice = price - fixed;
+        else discountedPrice = price - price * percentage;
 
         return discountedPrice;
     }
